@@ -9,7 +9,7 @@ import Header from "../Header";
 import { Route, Switch, Link, withRouter} from 'react-router-dom';
 import BlogPostItem from './blogPostItem';
 import PostLarge from '../postLarge';
-import ProjectTemplate from '../projects/projectTemplate';
+
 import PageShell from './PageShell';
 
 
@@ -79,9 +79,7 @@ class BlogPostList extends React.Component{
                     </div>
                     {blogPostList}
                 </Row>
-                <Switch>
-                <Route path='/blog/:test' component={PageShell(BlogPostItem)}/>
-                </Switch>
+
 
             </div>
         )

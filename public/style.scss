@@ -241,6 +241,30 @@ a:hover{
 }
 
 
+.icon{
+  width: 18px;
+  height: 18px;
+}
+
+
+nav{
+li{
+
+  a{
+
+
+
+    &:hover, &:focus, &:active{
+      border-bottom: solid #fff;
+      outline: none;
+    }
+  }
+
+}
+}
+
+
+
 
 //.underline {
 //  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);

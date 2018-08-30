@@ -17,12 +17,17 @@ import HomePage from './components/pages/homePage';
 import BlogPostList from './components/pages/blogPostList';
 import BlogPostItem from './components/pages/blogPostItem';
 import Admin from './components/admin/Admin';
-import ProjectList from './components/projectList';
+import ProjectList from './components/projects/projectList';
 import ProjectTemplate from './components/projects/projectTemplate';
 import PageShell from './components/pages/PageShell';
+
+import SinglePost from './components/pages/singlePost';
+
+
 //import Main from './main';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {ProjectPageTransition} from "./components/animations";
 
 // RETRIVES COMPONENTS BASED ON STATUS
 const Status = function ({ code, children }){
@@ -52,24 +57,37 @@ const routes = (
 
 
 
-        <Switch>
+        <Switch >
 
 
-            <Route exact={true} path="/" component={PageShell(HomePage)}/>
+            <Route exact={true} path="/" component={HomePage}/>
 
 
 
-            <Route exact={true} path="/work" component={PageShell(ProjectList)}/>
-
-
-            <Route path="/vim" component={PageShell(ProjectTemplate)}/>
-            <Route path="/alc" component={PageShell(ProjectTemplate)}/>
-            <Route path="/comom" component={PageShell(ProjectTemplate)}/>
-            <Route path="/contact" component={ContactForm}/>
-
-            <Route path="/blog" component={BlogPostList}>
+            <Route exact={true} path="/work" component={ProjectList}>
 
             </Route>
+            <Route exact path='/work/:project' render={props=>{
+                let projectPosition = props.location.pathname.replace('/work', '');
+                let markup = <ProjectTemplate params={projectPosition}/>
+                return markup
+            }}/>
+
+
+
+
+
+            <Route path="/contact" component={ContactForm}/>
+
+            <Route exact path="/blog" component={BlogPostList}/>
+            <Route exact path='/blog/:post' render={props=>{
+                let blogPosition = props.location.pathname.replace('/blog', '');
+                return <SinglePost params={blogPosition}/>
+            }} />
+
+
+
+
 
 
 
@@ -80,6 +98,7 @@ const routes = (
 
             <Route component={NotFound}/>
         </Switch>
+
 
 
         <Footer />

@@ -4,14 +4,16 @@ import React from 'react';
 
 import {Row,Col, Well} from 'react-bootstrap';
 
-import ProjectLarge from './projectLarge';
+import {ProjectLarge} from './ProjectLarge';
 
 
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getProjects, getHome,getOne} from '../actions/projectsActions'
-import Header from "./Header";
+import {getProjects, getHome,getOne} from '../../actions/projectsActions';
+import Header from "../Header";
+import {PageTitle, setFocus} from "../a11y/pageA11y";
+
 
 class ProjectList extends React.Component{
 
@@ -29,9 +31,9 @@ class ProjectList extends React.Component{
 
     componentDidMount(){
 
-        document.title = "Anderson's Work";
+        PageTitle("Anderson Day's Work");
         // Set focus to the content container
-        document.getElementById('app').focus();
+        setFocus();
 
         // Ensure the viewport returns to the top of the document window
         window.scrollTo(0, 0);
@@ -47,20 +49,21 @@ class ProjectList extends React.Component{
 
 
     render(){
-
+        console.log(this.props);
 
         const proejctList = this.props.projects.projects.map((project, i)=>{
             return(
 
                 <Row  key={i}>
                     <Col xs={12} bsStyle='project-list'>
-                    {/*<BookItem  _id={project._id} title={project.title} images={project.images} description={project.description} price={project.price} />*/}
+                        {/*<BookItem  _id={project._id} title={project.title} images={project.images} description={project.description} price={project.price} />*/}
                         <ProjectLarge companyName={project.companyName}
                                       projectHeading={project.projectHeading}
                                       getter={project.getter}
                                       to={project.getter}
                                       img={project.bgImage}
-                                      styleClass={'small'} />
+                                      match={this.props.match}
+                                      styleClass={'small'}/>
                     </Col>
                 </Row>
 
@@ -71,9 +74,10 @@ class ProjectList extends React.Component{
         return(
             <div>
                 <Header h1={"Work Examples"} />
-                
+
+
                 <Well>
-                {proejctList}
+                    {proejctList}
                 </Well>
 
             </div>
@@ -103,3 +107,4 @@ const mapDispatchToProps= ( dispatch) =>{
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectList);
+

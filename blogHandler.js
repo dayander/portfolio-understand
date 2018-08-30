@@ -25,8 +25,10 @@ function handleRender(req, res){
 
                 response.data.forEach(post =>{
 
-                    initStore[post.name] = post;
+                    initStore[post.title] = post;
                 });
+
+
 
 
                 // STEP-1 CREATE A REDUX STORE ON THE SERVER
@@ -51,13 +53,16 @@ function handleRender(req, res){
                 if (context.url) {
                     // can use the `context.status` that
                     // we added in RedirectWithStatus
+
                     redirect(context.status, context.url)
                 } else {
-                    res.status(200).render('index', {reactComponent, initialState})
+                    res.status(200).render('index', {reactComponent, initialState});
+
                 }
 
             })
             .catch(function(err){
+
                 console.log('#Initial Server-side rendering error', err);
             })
 

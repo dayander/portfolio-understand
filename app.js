@@ -40,7 +40,7 @@ app.use('/api', function(req, res){
 
 
 
-app.get('/blog/test3', blogHandler);
+
 app.get('/blog/:name', blogHandler);
 app.get('/blog', blogHandler);
 

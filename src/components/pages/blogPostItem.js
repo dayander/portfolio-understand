@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getPosts} from '../../actions/blogActions';
 import Header from "../Header";
-
+import {PageTitle} from "../a11y/pageA11y";
 
 
 class BlogPostItem extends React.Component{
@@ -11,33 +11,22 @@ class BlogPostItem extends React.Component{
         super(props);
 
         this.state={
-            post: this.props.posts.posts.find(x => "/blog"+ x.slug.toLowerCase() == this.props.match.url),
-            //index: this.props.posts.posts.findIndex(x =>  x.slug === this.props.match.url),
-            //this.props.projects.projects.find(x => x.getter === this.props.match.url),
-            title: '',
-            name: '',
-
-            // index: this.props.projects.projects.findIndex(x => x.getter === this.props.match.url),
-
-            // projects: [],
-            // vim: this.props.projects.projects[0],
-            // alc:this.props.projects.projects[1],
-            // p3:this.props.projects.projects[2],
 
         }
     }
 
 
     componentWillMount(){
-        console.log('will', this.state.post)
+
     }
 
     componentDidMount(){
+        const postObj = this.props.posts.posts.find(x => x.slug.toLowerCase() == this.props.params);
 
 
-        //this.props.getPosts();
+        PageTitle(postObj.title + ' || Anderson Day');
 
-        document.title = this.state.post.title +' || Anderson Day';
+
 
         // Set focus to the content container
         document.getElementById('app').focus();
@@ -49,20 +38,23 @@ class BlogPostItem extends React.Component{
 
 
     render(){
-const bodyText = props =>
-    {
-        if(this.state.post.title){
-            console.log(this.state.post.title)
-        }
-        };
+
+        const postObj = this.props.posts.posts.find(x => x.slug.toLowerCase() === this.props.params);
+        //const projectObj = this.props.projects.projects.find(x => x.getter === this.props.params);
+
+
+
+
+
+
 
 
         return(
             <div>
-                <Header h1={this.state.post.title}  h2={this.state.post.name}/>
+                <Header />
+                {postObj.name}
 
-
-<div className='bodyContent' dangerouslySetInnerHTML={{__html:this.state.post.content}}></div>
+{/*<div className='bodyContent' dangerouslySetInnerHTML={{__html:postObj.content}}></div>*/}
 
 
             </div>

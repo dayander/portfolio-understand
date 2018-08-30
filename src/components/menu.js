@@ -10,6 +10,9 @@ import {getProjects} from "../actions/projectsActions";
 
 import {Link, withRouter} from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
+import {Icon} from './a11y/pageA11y';
+
+
 class Menu extends React.Component{
     componentDidMount(){
 
@@ -47,11 +50,15 @@ class Menu extends React.Component{
                     </Nav>
                     <Nav pullRight>
 
-                        <NavItem href="https://www.facebook.com/anderson.day1" eventKey={1} >FB</NavItem>
+                        <NavItem href="https://www.facebook.com/anderson.day1" eventKey={1} >
+                            <Icon img={'/images/facebook.png'} alt={"Anderson Days Facebook"} />
+                        </NavItem>
 
 
 
-                        <NavItem href="https://www.linkedin.com/in/andersonday/" eventKey={2} >LI </NavItem>
+                        <NavItem href="https://www.linkedin.com/in/andersonday/" eventKey={2} >
+                            <Icon img={"/images/Linkedin.png"}  alt={"Anderson Days Linkedin"}/>
+                        </NavItem>
 
                     </Nav>
                 </Navbar.Collapse>

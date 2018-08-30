@@ -78,7 +78,7 @@ function handleRender(req, res){
 
             // STEP-1 CREATE A REDUX STORE ON THE SERVER
             const store = createStore(reducers, { "initStore": initStore, "projects":{"projects":response.data, }, "contact": null, "posts":{"posts":[] }} );
-
+            console.log('testing');
             // STEP-2 GET INITIAL STATE FROM THE STORE
             const initialState = JSON.stringify(store.getState()).replace(/<\/script/g, '<\\/script').replace(/<!--/g, '<\\!--');
             // STEP-3 IMPLEMENT REACT-ROUTER ON THE SERVER TO INTERCEPT CLIENT REQUESTs AND DEFINE WHAT TO DO WITH THEM
