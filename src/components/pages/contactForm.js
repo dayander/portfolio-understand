@@ -1,13 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {postContact} from '../../actions/contactActions';
+import {connect} from 'react-redux';
+import {setFormInput,postContact} from '../../actions/contactActions';
 import {findDOMNode} from 'react-dom';
 
 
 import {InputGroup, DropdownButton, MenuItem, Image, Col, Row, Well, Panel, FormControl, FormGroup,
-    ControlLabel, Button} from 'react-bootstrap';
+    ControlLabel, Button, Form} from 'react-bootstrap';
 import Header from "../Header";
+import {PageTitle, setFocus} from "../a11y/pageA11y";
+import {NameInput} from "../forms/nameInput";
+import EmailInput from "../forms/emailInput";
+import MessageInput from "../forms/messageInput";
 
 
 
@@ -16,34 +20,206 @@ class ContactFrom extends React.Component{
     constructor(props){
         super(props);
 
+
+
+        this.state={
+            contact: this.props.contact.contact,
+            name: this.props.contact.contact.name,
+            email: this.props.contact.contact.email,
+            message: this.props.contact.contact.message,
+            nameSuccess: "",
+            emailSuccess: "",
+            messageSuccess: "",
+            success: false,
+
+
+
+
+
+        };
+
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.resetValue = this.resetValue.bind(this);
+
+    }
+
+    validateForm(formData){
+        let name = formData.name;
+        let email = formData.email;
+        let message = formData.message;
+
+
+        let nameValid = this.validateName(name);
+        let emailValid = this.validateEmail(email);
+        let messageValid = this.validateMessage(message);
+
+
+
+        if(nameValid && emailValid && messageValid){
+
+            let formDataSend = {
+                name: formData.name,
+                email: formData.email,
+                message: formData.message,
+            };
+
+            this.props.postContact(formDataSend);
+            console.log('props',this.props)
+
+
+        }
+        else{
+            console.log("whoops");
+            return;
+        }
+    }
+
+
+    validateName(name){
+
+        if(name.value !== '' && name !== ''){
+            return true;
+        }else{
+
+
+        }
+
+
+    }
+
+    validateEmail(email){
+
+        if(email.value !== '' && email !== ''){
+            //sring minpulation to check for vailid email.
+
+            return true;
+        }else{
+            // create some modal pop up and or with actions to queue error message on form
+
+        }
+
+    }
+
+    validateMessage(message){
+
+        if(message.value !== '' && message !== ''){
+
+
+            return true;
+        }else{
+            // create some modal pop up and or with actions to queue error message on form
+
+        }
+
     }
 
 
 
     handleSubmit(){
         const contact= {
-            name: findDOMNode(this.refs.name).value,
-            email: findDOMNode(this.refs.email).value,
-            message: findDOMNode(this.refs.message).value,
-
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
         };
 
-        console.log(contact)
-        this.props.postContact(contact);
+        this.validateForm(contact);
+
+
+
+
+
+
+    }
+
+    componentWillReceiveProps(){
+        console.log('props',this.props);
+        console.log('state', this.state)
+
+        this.setState(this.props.contact.contact)
+    }
+
+
+    handleInputChange(e){
+
+
+
+
+        let name = e.target.name;
+        let value = e.target.value;
+
+        if(value === ""){
+            value = null;
+
+            this.props.setFormInput({[name]: value})
+        }
+
+        console.log('val',value);
+
+
+        this.props.setFormInput({[name]: value})
+        //
+        //
+        // this.setState({[name]: value});
+
+
+    }
+
+
+    resetValue(e){
+
+        console.log('reset');
+
     }
     componentDidMount(){
-        document.title = 'Contact Anderson Day';
 
+        PageTitle('Contact Anderson Day');
 
 
         // Set focus to the content container
-        document.getElementById('app').focus();
-
         // Ensure the viewport returns to the top of the document window
-        window.scrollTo(0, 0);
+        setFocus();
+
+
+
     }
 
+    componentDidUpdate(){
+
+
+
+    }
+
+
+componentWillUpdate(){
+
+
+
+
+
+
+}
+
+    componentWillMount(){
+
+
+
+
+    }
+
+
+
     render(){
+
+        const {nameValue, email, message,} = this.props.contact.contact;
+
+
+
+
+
+
+
+
         return(
             <div>
 
@@ -51,36 +227,20 @@ class ContactFrom extends React.Component{
                 <Header h1={"Contact Anderson Day"}/>
                 <Col xs={12} >
                     <Panel>
-                        <FormGroup controlId="name" >
-                            <ControlLabel>Name</ControlLabel>
-                            <FormControl
-                                type="text"
-                                placeholder="Enter Name"
-                                ref="name"
-                            />
-                            <FormControl.Feedback/>
-                        </FormGroup>
-                        <FormGroup controlId="email" >
-                            <ControlLabel>Email</ControlLabel>
-                            <FormControl
-                                type="email"
-                                placeholder="Enter Email"
-                                ref="email"
-                            />
-                            <FormControl.Feedback/>
-                        </FormGroup>
-                        <FormGroup controlId="message" >
-                            <ControlLabel>Message</ControlLabel>
-                            <FormControl
-                                type="text"
-                                placeholder="Leave a message"
-                                ref="message"
-                            />
-                            <FormControl.Feedback/>
-                        </FormGroup>
+
+
+                    <Form onChange={this.handleInputChange}>
+
+
+
+                        <NameInput nodeValue={nameValue} stateUpdate={this.handleInputChange} />
+                        <EmailInput nodeValue={email} stateUpdate={this.handleInputChange}/>
+                        <MessageInput nodeValue={message} stateUpdate={this.handleInputChange}/>
+
                         <Button onClick={this.handleSubmit.bind(this)} >
                             Submit
                         </Button>
+                    </Form>
                     </Panel>
                 </Col>
 
@@ -91,16 +251,35 @@ class ContactFrom extends React.Component{
 }
 
 const mapStateToProps = (state)=>{
+    console.log('state 2', state);
     return{
+
+        contact: state.contact,
+        success: state.success,
+        name: state.name,
+        email: state.email,
+        message: state.message,
 
     }
 };
 
-const mapDispatchToProps= ( dispatch) =>{
+const mapDispatchToProps= ( dispatch ) =>{
     return bindActionCreators(
         {
-            postContact
+            postContact,
+            setFormInput
         }, dispatch)
 };
+
+
+// ContactFrom.defaultProps = {
+//     contact:{
+//         contact:{
+//             name:'',
+//             email:'',
+//             message:'',
+//         }
+//     }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactFrom);

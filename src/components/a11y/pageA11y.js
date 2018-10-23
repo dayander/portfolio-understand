@@ -18,5 +18,6 @@ export const Icon = (props) => {
 
 
 export const setFocus = () => {
+    window.scrollTo(0, 0);
     document.getElementById('app').focus();
 }

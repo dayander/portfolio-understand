@@ -193,6 +193,10 @@ nav li a:hover, nav li a:focus, nav li a:active {
   outline: none;
 }
 
+.form-failed {
+  border: #ff0818 solid 4px !important;
+}
+
 /* transition: background-size 0.25s ease-in; */
 
 /*# sourceMappingURL=style.css.map */

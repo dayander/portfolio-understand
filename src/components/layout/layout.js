@@ -28,7 +28,7 @@ export const PullSection =(props) => {
 
 export const ProjectLarge = (props) =>{
     return(
-    <Link className="overlay-effect" params={props.to} to={props.to}>
+    <Link className="overlay-effect" params={props.to} to={'/work'+props.to}>
         <div style={{ backgroundImage: `url(${props.img})`}} className={props.styleClass + ' project-large'}>
             <div className="project-large content">
                 <div className="content-align">
@@ -87,15 +87,16 @@ export const FullWidthPageTitle = (props) => {
                     {(props.h2)?(h2):('')}
                 </div>
             </div>
-
-            {/*<div style={{ backgroundImage: `url(${props.img})`}} className='jumbotron header-image'>*/}
-                {/*<div style={{color: props.color}} className='container'>*/}
-                    {/*<h1 >{props.h1}</h1>*/}
-                    {/*/!*{(props.h2)?(h2):('')}*!/*/}
-
-                {/*</div>*/}
-            {/*</div>*/}
-
         </div>
   )
+};
+
+
+export const TopLevelH2 = (props) => {
+    return(
+    <div className="container">
+        <h2>{props.heading}</h2>
+        <p>{props.subHeading}</p>
+    </div>
+    )
 };

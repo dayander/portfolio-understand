@@ -7,10 +7,12 @@ import {getPosts} from '../../actions/blogActions';
 import {Carousel,Grid, Col, Row, Button} from 'react-bootstrap';
 import Header from "../Header";
 import { Route, Switch, Link, withRouter} from 'react-router-dom';
-import BlogPostItem from './blogPostItem';
-import PostLarge from '../postLarge';
 
-import PageShell from './PageShell';
+import PostLarge from '../postLarge';
+import {PageTitle, setFocus} from "../a11y/pageA11y";
+import {TopLevelH2} from "../layout/layout";
+
+
 
 
 
@@ -23,27 +25,25 @@ class BlogPostList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            h1: "Anderson's Blog Posts",
-            h2: "A place where I share my ideas and research",
-
 
         }
     }
 
 
      componentDidMount(){
-         document.title = 'Blog Posts || Anderson Day';
 
 
+         PageTitle('Blog Posts || Anderson Day');
+         setFocus();
          // Set focus to the content container
-         document.getElementById('app').focus();
+
 
          // Ensure the viewport returns to the top of the document window
-         window.scrollTo(0, 0);
 
 
-        this.props.getPosts();
 
+
+        this.props.getPosts()
 
 
 
@@ -69,17 +69,12 @@ class BlogPostList extends React.Component{
         return(
             <div>
 
-                  <Header h1={this.state.h1}   h2={this.state.h2}/>
+                <Header h1={"Anderson's Blog Posts"}   h2={"A place where I share my ideas and research"}/>
 
                 <Row style={{marginTop: '15px'}}>
-                    <div className="container">
-                    <h2>What I've been thinking about.</h2>
-                        <p>Find a range of topics.
-                            Read about what interests me and what I think it useful information to share</p>
-                    </div>
+                    <TopLevelH2 heading={'What I\'ve been thinking about.'} subHeading={'Find a range of topics. Read about what interests me and what I think it useful information to share'}/>
                     {blogPostList}
                 </Row>
-
 
             </div>
         )

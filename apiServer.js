@@ -10,22 +10,51 @@ app.use(cookieParser());
 // APIs
 var mongoose = require('mongoose');
 
-// const uri = 'mongodb://dayander:Burton12!@ds133876.mlab.com:33876/portfolio';
-// const options = {server:{
-//      socketOptions:
-// {
-//     socketTimeoutMS: 5000,
-//         connectTimeoutMS: 60000,
-// }
+//
+// var MongoClient = require('mongodb').MongoClient;
+//
+// // const uri = 'mongodb://dayander:Burton12!@ds133876.mlab.com:33876/portfolio';
+const options = {useNewUrlParser: true};
+
+
+const dbURI = "mongodb://dayander:Burton12!@cluster0-shard-00-00-ujeul.mongodb.net:27017,cluster0-shard-00-01-ujeul.mongodb.net:27017,cluster0-shard-00-02-ujeul.mongodb.net:27017/portfolio?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin"
+
+// mongoose.connect(dbURI, function (err, client) {
+//     const db = client.db('portfolio');
+//
+// });
+
+// mongoose.connect(dbURI, options).then(function () {
+//         console.log('database connection Established')
+//
+//     }).catch(function (err) {
+//         console.log("Error connecting to database", err)
+//     });
+//
+// process.on('unhandledRejection', (reason, promise) => {
+//     console.log('Unhandled Rejection at:', reason.stack || reason)
+//     // Recommended: send the information to sentry.io
+//     // or whatever crash reporting service you use
+// })
+
+//mongoose.Promise = global.Promise;
+
+
+//
+// mongoose.connect(dbURI, function (err, client) {
+//     const collection = client.db("test").collection("devices");
 //
 //
-// }};
+//
+// } )
 
 //mongoose.connect(uri, options);
-mongoose.connect('mongodb://dayander:Burton12!@ds133876.mlab.com:33876/portfolio');
+
+mongoose.connect(dbURI);
+// mongoose.connect('mongodb://dayander:Burton12!@ds133876.mlab.com:33876/portfolio');
 // mongoose.connect('mongodb://localhost:27017/test');
 var Contact = require('./models/contact.js');
-
+//
 var Projects = require('./models/projects.js');
 var Post = require('./models/post.js');
 
@@ -36,8 +65,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+console.log('before mongo connection');
 const db = mongoose.connection;
+
+console.log(db)
+
 db.on('error', console.error.bind(console, '# MongoDB connection error:'));
 // SET UP SESSIONS
 app.use(session({
@@ -81,20 +113,26 @@ app.get('/images', (req,res)=>{
 
 
 app.get('/projects', function(req, res){
+    console.log('projects');
 
     console.log('req: ', req.body)
+
+    console.log(db.co)
 
     Projects.find(function(err, projects){
         if(err){
             throw err;
         }
-
+        console.log(projects);
         res.json(projects)
     })
 });
 
 
 app.get('/projects/:projectName', function(req, res){
+
+
+
 
 
 
@@ -111,7 +149,7 @@ app.get('/projects/:projectName', function(req, res){
 
 
 app.post('/contact', function(req, res){
-
+    console.log('wtf');
     var contact = req.body;
     Contact.create(contact, function(err, contact){
         if(err){

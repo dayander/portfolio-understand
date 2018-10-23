@@ -48,7 +48,7 @@ class ProjectPage extends React.Component{
 
 
         const projectObj = this.props.projects.projects.find(x => x.getter === this.props.params);
-        
+
 
 
         const proejctList = this.props.projects.projects.map((project, i)=>{

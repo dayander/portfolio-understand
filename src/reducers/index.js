@@ -1,11 +1,12 @@
 "use strict";
 import {combineReducers} from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 //import Reducers
 
 
 
-import {cartReducer} from './cartReducers';
+
 import {projectReducer} from './projectsReducer';
 import {contactReducer} from './contactReducers';
 import {blogReducer} from './blogReducers';
@@ -17,9 +18,10 @@ import {blogReducer} from './blogReducers';
 
 
 export default combineReducers({
-    projects: projectReducer,
-    cart: contactReducer,
-    posts: blogReducer,
+    projects:projectReducer,
+    form: formReducer,
+    posts:blogReducer,
+    contact:contactReducer,
 
 
 })

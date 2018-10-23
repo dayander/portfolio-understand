@@ -1,33 +1,29 @@
-"use strict"
+"use strict";
 // REACT
 import React from 'react';
-import ReactDom from 'react-dom';
 // REACT-ROUTER
-//import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import { Route, Switch} from 'react-router-dom';
 import Menu from './components/menu';
 import Footer from './components/footer';
 // END REACT- ROUTER
 
 
-import Cart from './components/pages/cart';
+
 import ContactForm from './components/pages/contactForm';
-import BooksForm from './components/pages/booksForm';
+
 import HomePage from './components/pages/homePage';
 import BlogPostList from './components/pages/blogPostList';
-import BlogPostItem from './components/pages/blogPostItem';
+
 import Admin from './components/admin/Admin';
 import ProjectList from './components/projects/projectList';
 import ProjectTemplate from './components/projects/projectTemplate';
-import PageShell from './components/pages/PageShell';
+
 
 import SinglePost from './components/pages/singlePost';
+import ContactPage from "./components/pages/contactPage";
 
 
-//import Main from './main';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import {ProjectPageTransition} from "./components/animations";
+
 
 // RETRIVES COMPONENTS BASED ON STATUS
 const Status = function ({ code, children }){
@@ -69,7 +65,7 @@ const routes = (
             </Route>
             <Route exact path='/work/:project' render={props=>{
                 let projectPosition = props.location.pathname.replace('/work', '');
-                let markup = <ProjectTemplate params={projectPosition}/>
+                let markup = <ProjectTemplate params={projectPosition}/>;
                 return markup
             }}/>
 
@@ -77,7 +73,8 @@ const routes = (
 
 
 
-            <Route path="/contact" component={ContactForm}/>
+            <Route path="/contact" component={ContactPage}/>
+            <Route path="/contact-form" component={ContactForm}/>
 
             <Route exact path="/blog" component={BlogPostList}/>
             <Route exact path='/blog/:post' render={props=>{

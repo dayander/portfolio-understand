@@ -2,81 +2,72 @@
 
 //Cart reducers
 
-export const contactReducer=(state={cart: []}, action) =>{
+
+
+const initialState = {
+    contact: {
+        name: '',
+        email: '',
+        message:'',
+        success: false,
+        failed: false,
+
+    }
+}
+
+export const contactReducer=(state=initialState, action) =>{
+
+    console.log(action)
     switch(action.type) {
         case "POST_CONTACT":
-            return{...state.cart}
 
 
-        case "ADD_TO_CART":
 
-            return {
-                cart: [...action.payload],
-                totalAmount: totals([...state.cart, ...action.payload]).total
+
+            return{...state, contact:{
+
+                        name: '',
+                        email:'',
+                        message: '',
+                        success: true,}
             };
 
-            break;
+
+        case "SET_FORM_INPUT":
 
 
-        case "DELETE_CART_ITEM":
+            console.log('action', action);
 
-            return {
-                cart: action.payload,
-                totalAmount: totals(action.payload).total
-
-
-
-            };
-
-            break;
-        case "UPDATE_CART":
-// // Create a copy of the current array of books
-//             const currentBookToUpdate =
-//                 [...state.cart]
-// // Determine at which index in books array is the book to be deleted
-//             const indexToUpdate =
-//                 currentBookToUpdate.findIndex(
-//                     function(book){
-//                         return book._id === action._id;
-//                     }
-//                 )
-//             const newBookToUpdate = {
-//                 ...currentBookToUpdate[indexToUpdate],
-//                 quantity:
-//                 currentBookToUpdate[indexToUpdate].quantity +
-//                 action.unit
-//             }
-//             let cartUpdate =
-//                 [...currentBookToUpdate.slice(0,indexToUpdate), newBookToUpdate,
-//                     ...currentBookToUpdate.slice(indexToUpdate +
-//                         1)]
-
-            return {...state,
-                cart:action.payload,
-                totalAmount: totals(action.payload).total,
-                totalQty: totals(action.payload).qty,
+            if(action.payload.name === ""){
+                return {contact:{name: 'fuck'}}
             }
-            break;
+
+            if(action.payload.name) {
+                // console.log(state.contact.name)
+
+
+                return {...state, contact: {name: action.payload.name, email: '', message: ''}};
+            }
+
+                //return state.contact.name = action.payload.name;
+            // }else if(action.payload.email){
+            //     return {...state,   contact: { email: action.payload.email}};
+            // }
+            //
+            // else if(this.action.payload.message){
+            //     return {...state,   contact: { message: action.payload.message}};
+            //
+            // }
+
+
+            return {...state, }
+
+
+
+
+
     };
     return state
 
 };
 
-
-export const totals = (payloadArr) => {
-
-    const totalAmount = payloadArr.map((cartArr)=>{
-        return cartArr.price * cartArr.quantity;
-    }).reduce((a,b)=>{
-        return a + b
-    }, 0)
-    const totalQty =
-        payloadArr.map(function(qty){
-            return qty.quantity;
-        }).reduce(function(a, b) {
-            return a + b;
-        }, 0);
-    console.log(totalAmount.toFixed(2))
-    return {total:totalAmount.toFixed(2),
-        qty:totalQty}
-}
