@@ -191,14 +191,14 @@ class ContactFrom extends React.Component{
     }
 
 
-componentWillUpdate(){
+    componentWillUpdate(){
 
 
 
 
 
 
-}
+    }
 
     componentWillMount(){
 
@@ -212,12 +212,6 @@ componentWillUpdate(){
     render(){
 
         const {nameValue, email, message,} = this.props.contact.contact;
-
-
-
-
-
-
 
 
         return(
@@ -251,7 +245,6 @@ componentWillUpdate(){
 }
 
 const mapStateToProps = (state)=>{
-    console.log('state 2', state);
     return{
 
         contact: state.contact,
@@ -272,14 +265,6 @@ const mapDispatchToProps= ( dispatch ) =>{
 };
 
 
-// ContactFrom.defaultProps = {
-//     contact:{
-//         contact:{
-//             name:'',
-//             email:'',
-//             message:'',
-//         }
-//     }
-// }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactFrom);
