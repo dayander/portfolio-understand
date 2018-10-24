@@ -10,7 +10,7 @@ import {contactSubmit} from "./contactSubmit";
 
 
 let ContactForm = props => {
-    const { handleSubmit } = props;
+    const { handleSubmit, is } = props;
     return( <Form onSubmit={handleSubmit}>
 
 
