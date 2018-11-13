@@ -66,8 +66,7 @@ class HomePage extends React.Component{
 
     componentDidMount() {
         PageTitle("Anderson Days Portfolio");
-        //<PageTitle title={"Anderson Day's buttfuck Portfolio"}/>
-        //document.title = "Anderson Day's Portfolio   nuts";
+       
 
 
         // Set focus to the content container
