@@ -21,6 +21,9 @@ const middleware =applyMiddleware(thunk, logger);
 const initialState = window.INITIAL_STATE;
 const store = createStore(reducers,initialState, middleware);
 
+
+console.log(store.getState());
+
 import routes from './route'
 const Routes = (
     <Provider store={store}>

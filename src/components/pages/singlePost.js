@@ -17,7 +17,7 @@ class SinglePost extends React.Component {
     }
 
     render(){
-        const postObj =  this.props.posts.posts.find(x => x.slug === this.props.params);
+        const postObj =  this.props.posts.find(x => x.slug === this.props.params);
 
 
         return(

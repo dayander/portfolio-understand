@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {getProjects, getHome,getOne} from '../../actions/projectsActions';
 
 import {Jumbotron, Button, Grid, Row, Col, Well} from 'react-bootstrap';
-import Header from '../Header';
+import {Header} from '../Header';
 
 import {PullSection, ProjectLarge} from "../layout/layout";
 import {PageTitle} from "../a11y/pageA11y";
@@ -14,13 +14,11 @@ import {PageTitle} from "../a11y/pageA11y";
 
 
 const HomePullSectionData = [{heading:'Creating for Everyone',
-    body: 'I am an accessibility advocate. My interest and passion currently lies in web accessibility and universal design.'},
+    body: 'I am an accessibility advocate. I am passionate about creating accessible software, while educating others about digital accessibility'},
     {heading:'Developing From the User\'s Perspective', body: 'Studying Experience Architecture has taught me how to craft' +
         ' experiences from the users perspective. Designing accessible experiences, helps create more meaningful ' +
         'experiences for everyone.'},
-    {heading:'Design With Research', body: 'Studying Experience Architecture has taught me how ' +
-        'to craft experiences from the users perspective. Designing accessible experiences, ' +
-        'helps create more meaningful experiences for everyone.'},
+    {heading:'Design With Research', body: 'My education also taught me the importance of making infomred decisions about design with data..'},
     {heading:'Creating Tool Box', body: 'I\'ve worked with Javascript, React, Node, Express, Redux, WCAG 2.0, Section508, HTML, ' +
         'CSS, SCSS, Python and Django, Php, CMS including Wordpress, Adobe Business Catalyst, Concrete 5 ' +
         'and Drupal. I’ve also used the Adobe Creative Cloud, Microsoft Office, Universal Design, ' +
@@ -88,7 +86,7 @@ class HomePage extends React.Component{
             h2: 'I am an Accessibility Advocate'
         };
 
-        const homePageList = this.props.projects.projects.map((projects, i)=>{
+        const homePageList = this.props.projects.map((projects, i)=>{
             return(
                 <ProjectLarge key={i}
                               companyName={projects.projectName}

@@ -32,7 +32,7 @@ function handleRender(req, res){
 
 
                 // STEP-1 CREATE A REDUX STORE ON THE SERVER
-                const store = createStore(reducers, {"projects":{"projects":[], }, "initStore": initStore, "contact": null, "posts":{"posts":response.data }} );
+                const store = createStore(reducers, {"projects":[], "initStore": initStore, "contact": null, "posts":response.data } );
 
 
                 // STEP-2 GET INITIAL STATE FROM THE STORE

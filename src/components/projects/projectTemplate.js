@@ -2,7 +2,7 @@ import React from 'react';
 import {getProjects, getHome,getOne} from '../../actions/projectsActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Header from "../Header";
+import {Header} from "../Header";
 import PullQuote from "../pullQuote";
 
 
@@ -28,7 +28,7 @@ class ProjectPage extends React.Component{
 
 
     componentDidMount(){
-        const projectObj = this.props.projects.projects.find(x => x.getter === this.props.params);
+        const projectObj = this.props.projects.find(x => x.getter === this.props.params);
         //document.title = this.state.project.projectHeading +' || Anderson Day';
         //this.props.getOne(this.props.match.params.title);
             PageTitle(projectObj.projectHeading + " || Anderson Day");
@@ -47,11 +47,12 @@ class ProjectPage extends React.Component{
     render(){
 
 
-        const projectObj = this.props.projects.projects.find(x => x.getter === this.props.params);
+        const projectObj = this.props.projects.find(x => x.getter === this.props.params);
 
 
 
-        const proejctList = this.props.projects.projects.map((project, i)=>{
+
+        const proejctList = this.props.projects.map((project, i)=>{
 
             if(project !== projectObj){
             return(
@@ -90,6 +91,9 @@ class ProjectPage extends React.Component{
 
             <Header color={"#fff"} img={projectObj.bgImage} h1={projectObj.companyName} h2={projectObj.projectHeading}/>
                 <PullSection heading={projectObj.challengeHeading} body={projectObj.challenge}/>
+
+
+
                 <DoublePicture img1={projectObj.challenge01} img2={projectObj.challenge02}/>
 
                 <PullSection heading={projectObj.approachHeading} body={projectObj.approach}/>

@@ -11,7 +11,7 @@ import {ProjectLarge} from './ProjectLarge';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getProjects, getHome,getOne} from '../../actions/projectsActions';
-import Header from "../Header";
+import {Header} from "../Header";
 import {PageTitle, setFocus} from "../a11y/pageA11y";
 
 
@@ -51,7 +51,7 @@ class ProjectList extends React.Component{
     render(){
         console.log(this.props);
 
-        const proejctList = this.props.projects.projects.map((project, i)=>{
+        const proejctList = this.props.projects.map((project, i)=>{
             return(
 
                 <Row  key={i}>

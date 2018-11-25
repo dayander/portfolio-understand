@@ -2,7 +2,7 @@
 
 
 //define books reducers
-export const projectReducer=(state={}, action) => {
+export const projectReducer=(state=[], action) => {
 
     switch (action.type) {
         case 'GET_PROJECTS':
@@ -21,7 +21,7 @@ export const projectReducer=(state={}, action) => {
             });
 
             //return nextState
-            return {...state, projects: [...action.payload]}
+            return [...action.payload]
             break
         case 'GET_ONE':
             return {...state,oneProjects:[action.payload]};

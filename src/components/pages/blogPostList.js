@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getPosts} from '../../actions/blogActions';
 import {Carousel,Grid, Col, Row, Button} from 'react-bootstrap';
-import Header from "../Header";
+import {Header} from "../Header";
 import { Route, Switch, Link, withRouter} from 'react-router-dom';
 
 import PostLarge from '../postLarge';
@@ -50,7 +50,10 @@ class BlogPostList extends React.Component{
 
     }
     render(){
-        const blogPostList = this.props.posts.posts.map((post, i)=>{
+
+
+        console.log(this.props.posts)
+        const blogPostList = this.props.posts.map((post, i)=>{
             return(
                 <Row key={i} className='blog-list-item'>
                     <Col xs={12}  >

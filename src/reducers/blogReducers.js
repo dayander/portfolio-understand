@@ -7,8 +7,8 @@ export const blogReducer=(state={posts: []}, action) =>{
         case 'GET_POSTS':
 
             //
-            return {...state, posts: [...action.payload] };
-            break;
+            return[...action.payload];
+
 
         case 'POST_BOOK':
 
