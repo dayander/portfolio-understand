@@ -1,7 +1,7 @@
 import React from 'react'
 import ContactForm from '../forms/contact';
 import {Well, Row, Col, Panel} from  'react-bootstrap';
-import Header from "../Header";
+import {Header} from "../Header";
 import {contactSubmit} from "../forms/contactSubmit";
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
