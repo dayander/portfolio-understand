@@ -5,19 +5,18 @@
 
 
 const initialState = {
-    contact: {
+
         name: '',
         email: '',
         message:'',
         success: false,
         failed: false,
 
-    }
-}
+
+};
 
 export const contactReducer=(state=initialState, action) =>{
 
-    console.log(action)
     switch(action.type) {
         case "POST_CONTACT":
 
@@ -36,14 +35,8 @@ export const contactReducer=(state=initialState, action) =>{
         case "SET_FORM_INPUT":
 
 
-            console.log('action', action);
-
-            if(action.payload.name === ""){
-                return {contact:{name: 'fuck'}}
-            }
 
             if(action.payload.name) {
-                // console.log(state.contact.name)
 
 
                 return {...state, contact: {name: action.payload.name, email: '', message: ''}};

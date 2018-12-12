@@ -51,7 +51,7 @@ class Menu extends React.Component{
                     <Nav pullRight>
 
                         <NavItem href="https://www.facebook.com/anderson.day1" eventKey={1} >
-                            <Icon img={'/images/facebook.png'} alt={"Anderson Days Facebook"} />
+                            <Icon img={'/images/GitHub-Mark-Light-120px-plus.png'} alt={"Anderson Days Github"} />
                         </NavItem>
 
 

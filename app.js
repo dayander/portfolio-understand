@@ -35,7 +35,7 @@ const apiProxy = httpProxy.createProxyServer({
 app.use('/api', function(req, res){
 
     apiProxy.web(req, res);
-})
+});
 //
 
 

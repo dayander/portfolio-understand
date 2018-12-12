@@ -139,8 +139,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps= ( dispatch) =>{
     return bindActionCreators(
         {
-            getProjects,
-            getHome,
+            getProjects
 
 
         }, dispatch)

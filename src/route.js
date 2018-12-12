@@ -14,7 +14,7 @@ import ContactForm from './components/pages/contactForm';
 import HomePage from './components/pages/homePage';
 import BlogPostList from './components/pages/blogPostList';
 
-import Admin from './components/admin/Admin';
+import {Admin} from './components/admin/Admin';
 import ProjectList from './components/projects/projectList';
 import ProjectTemplate from './components/projects/projectTemplate';
 

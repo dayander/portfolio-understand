@@ -223,18 +223,18 @@ class ContactFrom extends React.Component{
                     <Panel>
 
 
-                    <Form onChange={this.handleInputChange}>
+                        <Form onChange={this.handleInputChange}>
 
 
 
-                        <NameInput nodeValue={nameValue} stateUpdate={this.handleInputChange} />
-                        <EmailInput nodeValue={email} stateUpdate={this.handleInputChange}/>
-                        <MessageInput nodeValue={message} stateUpdate={this.handleInputChange}/>
+                            <NameInput nodeValue={nameValue} stateUpdate={this.handleInputChange} />
+                            <EmailInput nodeValue={email} stateUpdate={this.handleInputChange}/>
+                            <MessageInput nodeValue={message} stateUpdate={this.handleInputChange}/>
 
-                        <Button onClick={this.handleSubmit.bind(this)} >
-                            Submit
-                        </Button>
-                    </Form>
+                            <Button onClick={this.handleSubmit.bind(this)} >
+                                Submit
+                            </Button>
+                        </Form>
                     </Panel>
                 </Col>
 

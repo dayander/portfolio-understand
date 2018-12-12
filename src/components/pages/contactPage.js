@@ -8,10 +8,9 @@ import {connect} from 'react-redux'
 
 class ContactPage extends React.Component {
     submit = values => {
-        // print the form values to the console
+
          this.props.contactSubmit(values);
-        // window.alert(JSON.stringify(values));
-        // console.log(values)
+
     }
     render() {
         return (

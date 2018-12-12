@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 var express = require('express');
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -68,7 +68,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 console.log('before mongo connection');
 const db = mongoose.connection;
 
-console.log(db)
+
 
 db.on('error', console.error.bind(console, '# MongoDB connection error:'));
 // SET UP SESSIONS
@@ -113,17 +113,15 @@ app.get('/images', (req,res)=>{
 
 
 app.get('/projects', function(req, res){
-    console.log('projects');
 
-    console.log('req: ', req.body)
 
-    console.log(db.co)
+
 
     Projects.find(function(err, projects){
         if(err){
             throw err;
         }
-        console.log(projects);
+
         res.json(projects)
     })
 });
@@ -137,7 +135,7 @@ app.get('/projects/:projectName', function(req, res){
 
 
     var name = req.params.projectName;
-    console.log(name);
+
     Projects.findOne(({projectName: name}),function(err, projects){
         if(err){
             throw err;
@@ -149,7 +147,7 @@ app.get('/projects/:projectName', function(req, res){
 
 
 app.post('/contact', function(req, res){
-    console.log('wtf');
+
     var contact = req.body;
     Contact.create(contact, function(err, contact){
         if(err){
@@ -184,7 +182,7 @@ app.get('/posts/:title', function(req, res){
         if(err){
             throw err;
         }
-        console.log(post)
+
 
         res.json(post)
     })
@@ -195,9 +193,11 @@ app.get('/posts/:title', function(req, res){
 
 
 
-app.post('/post/:title', function(req, res){
+app.post('/post', function(req, res){
 
     var post = req.body;
+
+    console.log(post);
     Post.create(post, function(err, post){
         if(err){
             throw err;

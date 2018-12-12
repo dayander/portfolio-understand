@@ -8,7 +8,6 @@ import { reducer as formReducer } from 'redux-form'
 
 
 import {projectReducer} from './projectsReducer';
-import {contactReducer} from './contactReducers';
 import {blogReducer} from './blogReducers';
 
 
@@ -20,8 +19,7 @@ import {blogReducer} from './blogReducers';
 export default combineReducers({
     projects:projectReducer,
     form: formReducer,
-    posts:blogReducer,
-    contact:contactReducer,
+    posts:blogReducer
 
 
 })

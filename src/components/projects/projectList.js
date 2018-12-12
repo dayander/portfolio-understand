@@ -10,7 +10,7 @@ import {ProjectLarge} from './ProjectLarge';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getProjects, getHome,getOne} from '../../actions/projectsActions';
+import {getProjects} from '../../actions/projectsActions';
 import {Header} from "../Header";
 import {PageTitle, setFocus} from "../a11y/pageA11y";
 
@@ -21,11 +21,6 @@ class ProjectList extends React.Component{
     constructor(props){
         super(props);
 
-
-        this.state={
-
-
-        }
 
     }
 
@@ -49,14 +44,13 @@ class ProjectList extends React.Component{
 
 
     render(){
-        console.log(this.props);
 
         const proejctList = this.props.projects.map((project, i)=>{
             return(
 
                 <Row  key={i}>
                     <Col xs={12} bsStyle='project-list'>
-                        {/*<BookItem  _id={project._id} title={project.title} images={project.images} description={project.description} price={project.price} />*/}
+
                         <ProjectLarge companyName={project.companyName}
                                       projectHeading={project.projectHeading}
                                       getter={project.getter}
@@ -98,8 +92,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps= ( dispatch) =>{
     return bindActionCreators(
         {
-            getProjects,
-            getHome,
+            getProjects
 
 
         }, dispatch)

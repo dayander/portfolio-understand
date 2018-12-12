@@ -1,15 +1,18 @@
 import React from 'react';
 
 
-class Admin extends React.Component{
+import AddPostForm from '../forms/addPostForm';
+import ConnectedAddPostForm from '../forms/ConnectedAddPostForm';
 
 
+export const Admin = ()=>{
 
-    render(){
-        return(
-            <h1>Admin</h1>
-        )
-    }
-}
+    return(
+        <div>
+            <h1>Admin Area 1</h1>
+            <ConnectedAddPostForm/>
 
-export default Admin;
+        </div>
+    )
+
+};
