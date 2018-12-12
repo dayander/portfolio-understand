@@ -50,7 +50,7 @@ class Menu extends React.Component{
                     </Nav>
                     <Nav pullRight>
 
-                        <NavItem href="https://www.facebook.com/anderson.day1" eventKey={1} >
+                        <NavItem href="https://github.com/dayander" eventKey={1} >
                             <Icon img={'/images/GitHub-Mark-Light-120px-plus.png'} alt={"Anderson Days Github"} />
                         </NavItem>
 
