@@ -163,14 +163,14 @@ app.post('/contact', function(req, res){
         var transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user:
-                pass:
+                user: 'andersonday1444@gmail.com',
+                pass: 'aday1444'
             }
         });
 
         var mailOptions = {
             from: contact.email,
-            to: 
+            to: 'dayander@msu.edu',
             subject: 'From Portfolio',
             text: contact.message
         };
