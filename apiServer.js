@@ -9,6 +9,9 @@ app.use(cookieParser());
 
 // APIs
 var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
+
+
 
 //
 // var MongoClient = require('mongodb').MongoClient;
@@ -153,6 +156,36 @@ app.post('/contact', function(req, res){
         if(err){
             throw err;
         }
+
+
+
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'andersonday1444@gmail.com',
+                pass: 'aday1444'
+            }
+        });
+
+        var mailOptions = {
+            from: contact.email,
+            to: 'dayander@msu.edu',
+            subject: 'From Portfolio',
+            text: contact.message
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+
+
+
+
         res.json(contact);
     })
 

@@ -40,7 +40,7 @@ class Menu extends React.Component{
                         <LinkContainer to="/work">
                         <NavItem eventKey={2} >Work</NavItem>
                         </LinkContainer>
-                       
+
 
                         <LinkContainer to="/contact">
                             <NavItem eventKey={2} >Contact</NavItem>
