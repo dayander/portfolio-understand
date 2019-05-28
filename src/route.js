@@ -21,6 +21,8 @@ import ProjectTemplate from './components/projects/projectTemplate';
 
 import SinglePost from './components/pages/singlePost';
 import ContactPage from "./components/pages/contactPage";
+import ResumePage from "./components/pages/resume";
+import SkiHillA11yPage from "./components/pages/SkiHillA11yPage";
 
 
 
@@ -63,13 +65,14 @@ const routes = (
             <Route exact={true} path="/work" component={ProjectList}>
 
             </Route>
+            <Route path={'/work/skihill-a11y'} component={SkiHillA11yPage}/>
             <Route exact path='/work/:project' render={props=>{
                 let projectPosition = props.location.pathname.replace('/work', '');
                 let markup = <ProjectTemplate params={projectPosition}/>;
                 return markup
             }}/>
 
-
+            <Route path={'/resume'} component={ResumePage} />
 
 
 

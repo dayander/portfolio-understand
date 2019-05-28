@@ -109,7 +109,21 @@ class HomePage extends React.Component{
             <div>
             <Header color={homeHeader.color} img={homeHeader.img} h1={homeHeader.h1} h2={homeHeader.h2}/>
 
-            {homePullSection}
+                <Jumbotron className="white">
+                    <div className="container pullquote">
+                        <div className="pullquote-inner">
+                            <p>
+                                Hello, I am a software engineer studying <a href={'http://xa.cal.msu.edu/'}>Experience Architecture</a> at Michigan State University. Being a developer
+                                while learning user experience design allows me to create accessible
+                                software from the ground up while communicating ideas to other engineers,
+                                designers, and various stake holders.
+                            </p>
+
+                        </div>
+                    </div>
+                </Jumbotron>
+
+
 
             <HomeProjectSection
                 first={homePageList[0]}
