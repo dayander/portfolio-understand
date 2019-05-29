@@ -203,4 +203,8 @@ nav li a:hover, nav li a:focus, nav li a:active {
   margin: 0 auto;
 }
 
+.custom-well {
+  padding: 19px;
+}
+
 /*# sourceMappingURL=style.css.map */
