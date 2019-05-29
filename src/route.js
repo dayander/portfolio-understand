@@ -79,11 +79,11 @@ const routes = (
             <Route path="/contact" component={ContactPage}/>
             <Route path="/contact-form" component={ContactForm}/>
 
-            <Route exact path="/blog" component={BlogPostList}/>
-            <Route exact path='/blog/:post' render={props=>{
-                let blogPosition = props.location.pathname.replace('/blog', '');
-                return <SinglePost params={blogPosition}/>
-            }} />
+            {/*<Route exact path="/blog" component={BlogPostList}/>*/}
+            {/*<Route exact path='/blog/:post' render={props=>{*/}
+                {/*let blogPosition = props.location.pathname.replace('/blog', '');*/}
+                {/*return <SinglePost params={blogPosition}/>*/}
+            {/*}} />*/}
 
 
 
