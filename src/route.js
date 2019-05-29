@@ -23,6 +23,7 @@ import SinglePost from './components/pages/singlePost';
 import ContactPage from "./components/pages/contactPage";
 import ResumePage from "./components/pages/resume";
 import SkiHillA11yPage from "./components/pages/SkiHillA11yPage";
+import ConferencePresentationPage from "./components/pages/ConferencePresentationPage"
 
 
 
@@ -66,6 +67,7 @@ const routes = (
 
             </Route>
             <Route path={'/work/skihill-a11y'} component={SkiHillA11yPage}/>
+            <Route path={'/work/igniteux2019'} component={ConferencePresentationPage}/>
             <Route exact path='/work/:project' render={props=>{
                 let projectPosition = props.location.pathname.replace('/work', '');
                 let markup = <ProjectTemplate params={projectPosition}/>;

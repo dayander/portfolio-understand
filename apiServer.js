@@ -129,6 +129,26 @@ app.get('/projects', function(req, res){
     })
 });
 
+app.post('/project', function (req, res) {
+
+    console.log(req.body)
+
+
+    const project = req.body
+
+
+    Projects.create(project, function (err, project) {
+
+        if(err){
+            throw err
+        }
+
+
+        res.json(project)
+    })
+
+})
+
 
 app.get('/projects/:projectName', function(req, res){
 

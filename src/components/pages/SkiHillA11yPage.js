@@ -18,14 +18,20 @@ class SkiHillA11yPage extends React.Component{
 
 
     componentDidMount(){
-        console.log(this.props.match.path)
+
 
         document.getElementById('app').focus();
         window.scrollTo(0, 0);
 
 
 
-        //const projectObj = this.props.projects.find(x => x.getter === this.props.params);
+
+
+        const projectObj = this.props.projects.find(x => x.address === this.props.match.path);
+
+        console.log(projectObj)
+
+
 
         PageTitle("Ski Hill A11y" + " || Anderson Day");
     }
@@ -34,7 +40,7 @@ class SkiHillA11yPage extends React.Component{
 
 
     render(){
-        const projectObj = this.props.projects.find(x => x.getter === this.props.params);
+        const projectObj = this.props.projects.find(x => x.address === this.props.match.path);
 
         const proejctList = this.props.projects.map((project, i)=>{
 
@@ -58,7 +64,7 @@ class SkiHillA11yPage extends React.Component{
                 <Row>
                     <div className="container">
                         <Col xs={12}>
-                            <Picture src={'/images/skihill-a11y/challengeImage.jpg'} alt={''}/>
+                            <Picture src={projectObj.largeImage} alt={''}/>
 
                         </Col>
                     </div>
@@ -138,7 +144,7 @@ class SkiHillA11yPage extends React.Component{
 
 
 
-                <PullSection  heading={'Challenge'} body={'During the summer of 2018 I went on a study away to California put on by Teach Access to learn about accessibility in the tech industry. During my week visiting Google, Facebook, Microsoft, Adobe and Verizon Media. My group a fellow student from Michigan state and two students looked for gaps in our course work where we could implement Accessibility into the learning.'}/>
+                <PullSection  heading={'Challenge'} body={projectObj.challenge}/>
 
                 <ProjectPictureLarge/>
 
