@@ -24,6 +24,7 @@ import ContactPage from "./components/pages/contactPage";
 import ResumePage from "./components/pages/resume";
 import SkiHillA11yPage from "./components/pages/SkiHillA11yPage";
 import ConferencePresentationPage from "./components/pages/ConferencePresentationPage"
+import AccessibleMuseumAppPage from "./components/pages/AccessibleMuseumAppPage";
 
 
 
@@ -68,6 +69,7 @@ const routes = (
             </Route>
             <Route path={'/work/skihill-a11y'} component={SkiHillA11yPage}/>
             <Route path={'/work/igniteux2019'} component={ConferencePresentationPage}/>
+            <Route path={'/work/accessiblemuseum'} component={AccessibleMuseumAppPage} />
             <Route exact path='/work/:project' render={props=>{
                 let projectPosition = props.location.pathname.replace('/work', '');
                 let markup = <ProjectTemplate params={projectPosition}/>;
@@ -81,22 +83,7 @@ const routes = (
             <Route path="/contact" component={ContactPage}/>
             <Route path="/contact-form" component={ContactForm}/>
 
-            {/*<Route exact path="/blog" component={BlogPostList}/>*/}
-            {/*<Route exact path='/blog/:post' render={props=>{*/}
-                {/*let blogPosition = props.location.pathname.replace('/blog', '');*/}
-                {/*return <SinglePost params={blogPosition}/>*/}
-            {/*}} />*/}
 
-
-
-
-
-
-
-
-
-
-            <Route path="/admin" component={Admin}/>
 
             <Route component={NotFound}/>
         </Switch>

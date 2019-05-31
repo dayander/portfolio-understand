@@ -60,11 +60,13 @@ class ConferencePresentationPage extends React.Component{
                     <Jumbotron className={'white'}>
 
 
-                <PullSection heading={'test'} body={'test'}/>
+                <PullSection heading={'About the Presentation'} body={'In March of 2019 I had the oppurtunity to present at Ignite UX Michigan'}/>
 
-                <iframe className={'block'} width="560" height="315" src="https://www.youtube.com/embed/69Gjod5B4fw" frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen></iframe>
+                    <div className={'video-container'}>
+                        <iframe className={'video-iframe'} src="https://www.youtube.com/embed/69Gjod5B4fw" frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen></iframe>
+                    </div>
                     </Jumbotron>
 
 

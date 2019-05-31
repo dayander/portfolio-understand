@@ -89,7 +89,7 @@ class HomePage extends React.Component{
         const homePageList = this.props.projects.map((projects, i)=>{
             return(
                 <ProjectLarge key={i}
-                              companyName={projects.projectName}
+                              companyName={projects.companyName}
                               projectHeading={projects.projectHeading}
                               getter={projects.getter}
                               project={projects}
@@ -126,9 +126,9 @@ class HomePage extends React.Component{
 
 
             <HomeProjectSection
-                first={homePageList[0]}
+                first={homePageList[2]}
                 second={homePageList[1]}
-                third={homePageList[2]}
+                third={homePageList[3]}
             />
 
 
