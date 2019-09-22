@@ -1,25 +1,11 @@
-"use strict";
-// REACT
 import React from 'react';
-// REACT-ROUTER
 import { Route, Switch} from 'react-router-dom';
 import Menu from './components/menu';
 import Footer from './components/footer';
-// END REACT- ROUTER
-
-
-
 import ContactForm from './components/pages/contactForm';
-
 import HomePage from './components/pages/homePage';
-import BlogPostList from './components/pages/blogPostList';
-
-import {Admin} from './components/admin/Admin';
 import ProjectList from './components/projects/projectList';
 import ProjectTemplate from './components/projects/projectTemplate';
-
-
-import SinglePost from './components/pages/singlePost';
 import ContactPage from "./components/pages/contactPage";
 import ResumePage from "./components/pages/resume";
 import SkiHillA11yPage from "./components/pages/SkiHillA11yPage";

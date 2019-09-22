@@ -1,6 +1,6 @@
 "use strict"
 // REACT
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 // REACT-ROUTER
@@ -21,8 +21,14 @@ const middleware =applyMiddleware(thunk, logger);
 const initialState = window.INITIAL_STATE;
 const store = createStore(reducers,initialState, middleware);
 
+function Home() {
+    return(
+        <React.Fragment>
 
-console.log(store.getState());
+        </React.Fragment>
+    )
+}
+
 
 import routes from './route'
 const Routes = (

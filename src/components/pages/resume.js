@@ -122,7 +122,7 @@ class ResumePage extends React.Component{
                     <div className="container ">
                         <a href={'/andersonDayResume.docx'} download>Download Resume</a>
 
-                            <h2>Experinces</h2>
+                            <h2>Experiences</h2>
                         {experienceList}
 
                         <Row>
