@@ -53,6 +53,6 @@
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.12"
   }
 }
